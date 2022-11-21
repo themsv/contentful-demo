@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useContentful from "../../useContentful";
 import styled from "styled-components";
+
+import { getAllCarousel } from "../../services/cms";
 
 const CarouselComp = () => {
   const [carousel, setCarousel] = useState([]);
 
-  const { getCarouselImages } = useContentful();
   useEffect(() => {
-    getCarouselImages().then((response) => response && setCarousel(response));
+    getAllCarousel().then((response) => response && setCarousel(response));
   }, []);
 
   return (
@@ -22,7 +22,10 @@ const CarouselComp = () => {
         showThumbs={false}
       >
         {carousel.map((eachItem) => (
-          <div className="carousel-image-wrapper">
+          <div
+            className="carousel-image-wrapper"
+            key={eachItem.textAlternative}
+          >
             <img
               src={eachItem.imageUrl}
               alt={eachItem.textAlternative}

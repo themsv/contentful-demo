@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-
+import registerImage from "../../assets/register.png";
 const defaultFormFields = {
   fname: "",
   lname: "",
@@ -32,9 +32,8 @@ const Register = () => {
   return (
     <RegisterContainer>
       <RegisterText>
-        <RegisterTitle>Signup</RegisterTitle>
         <RegisterDescription>
-          We dont share your personal details with anyone.
+          <img src={registerImage} alt="Register " width="400" />
         </RegisterDescription>
       </RegisterText>
       <RegisterForm>
@@ -73,7 +72,7 @@ const Register = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <button>SIGNUP</button>
+        <RegisterButton disabled={true}>SIGNUP</RegisterButton>
       </RegisterForm>
     </RegisterContainer>
   );
@@ -89,25 +88,22 @@ const RegisterContainer = styled.div`
 const RegisterText = styled.div`
   width: 40%;
 `;
-const RegisterTitle = styled.h2`
-  font-size: 24px;
-  font-weight: 700;
-  margin: 30px 0;
-`;
+
 const RegisterDescription = styled.p`
   font-size: 18px;
 `;
 const RegisterForm = styled.form`
   width: 30%;
+`;
 
-  button {
-    background-color: #fe530a;
-    padding: 12px 32px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-  }
+const RegisterButton = styled.button`
+  border: none;
+  outline: none;
+  border: 1px solid #fe530a;
+  padding: 12px 32px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #fe530a;
 `;
 
 const subColor = "grey";

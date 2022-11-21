@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import useContentful from "../../useContentful";
 import { useEffect, useState } from "react";
 
+import { getVideos } from "../../services/cms";
+
 const RoutePageVideo = () => {
-  const { getVideos } = useContentful();
-  const [videos, setVideos] = useState([]);
+  const [video, setVideo] = useState({});
   useEffect(() => {
-    getVideos().then((response) => response && setVideos(response));
+    getVideos().then((response) => response && setVideo(response[0]));
   }, []);
 
-  console.log(videos);
   return (
     <RouteVideoContainer>
       <PageTite>
@@ -30,14 +29,12 @@ const RoutePageVideo = () => {
         City architecture helped reduce crime, traffic and pollution.
       </p>
       <VideoContainer>
-        {videos.map((video) => (
-          <iframe
-            width="620"
-            height="400"
-            src={video.videoMedia}
-            title={video.videoTitle}
-          ></iframe>
-        ))}
+        <iframe
+          width="620"
+          height="400"
+          src={video.videoMedia}
+          title={video.videoTitle}
+        ></iframe>
       </VideoContainer>
     </RouteVideoContainer>
   );

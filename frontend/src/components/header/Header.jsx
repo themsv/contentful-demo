@@ -54,7 +54,7 @@ const Header = () => {
               </div>
             </Link>
             {nav_data.map((eachNav) => (
-              <NavDrawer eachNav={eachNav} />
+              <NavDrawer key={eachNav.label} eachNav={eachNav} />
             ))}
           </HeaderContainer>
           <HeadButton to="/register">Become a Client</HeadButton>
@@ -84,6 +84,12 @@ const HeadButton = styled(Link)`
   border: none;
   outline: none;
   text-decoration: none;
+
+  &:hover {
+    color: #fe530a;
+    background-color: #fff;
+    border: 1px solid #fe530a;
+  }
 `;
 
 const HeadWrapper = styled.div`

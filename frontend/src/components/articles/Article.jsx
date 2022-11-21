@@ -1,20 +1,18 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useContentful from "../../useContentful";
-import VideoLink from "../video-links/VideoLink";
+import { getAllArticles } from "../../services/cms";
 
 const Article = () => {
   const [articles, setArticles] = useState([]);
-  const { getArticles } = useContentful();
   useEffect(() => {
-    getArticles().then((response) => response && setArticles(response));
+    getAllArticles().then((response) => response && setArticles(response));
   }, []);
   return (
     <ArticleWrapper>
       <ArticleContainer>
         {articles.map((article) => (
-          <ArticleCard>
+          <ArticleCard key={article.articleTitle}>
             <img src={article.articleImage} alt={article.articleTitle} />
             <h4>{article.articleTitle}</h4>
             <p>{article.articleSummary}</p>

@@ -14,8 +14,8 @@ const NavDrawer = ({ eachNav }) => {
         <div>{label}</div>
         {show && (
           <NavHover>
-            {values.map((value) => (
-              <li>
+            {values.map((value, index) => (
+              <li key={value + index}>
                 {value} <ion-icon name="arrow-forward-outline"></ion-icon>
               </li>
             ))}

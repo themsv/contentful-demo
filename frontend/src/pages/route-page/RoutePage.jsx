@@ -54,7 +54,7 @@ const PageContent = styled.div`
   ul {
     list-style: none;
     li {
-      color: #fe530a;
+      color: #666;
       font-size: 18px;
       p {
         color: #000;

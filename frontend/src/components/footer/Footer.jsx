@@ -47,6 +47,7 @@ const FooterWrapper = styled.footer`
   justify-content: space-around;
   color: #0a2246;
   padding: 1rem 0 4rem;
+  margin-top: 1rem;
 `;
 
 const FooterSection = styled.ul`

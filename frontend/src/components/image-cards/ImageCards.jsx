@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import useContentful from "../../useContentful";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getPDFs } from "../../services/cms";
 
 const ImageCards = () => {
-  const { getPDFs } = useContentful();
   const [pdfs, setPDFs] = useState([]);
   useEffect(() => {
     getPDFs().then((response) => response && setPDFs(response[0]));
   }, []);
-  console.log(pdfs);
   return (
     <ImageCardsContainer>
       <ImageCardWrapper>
